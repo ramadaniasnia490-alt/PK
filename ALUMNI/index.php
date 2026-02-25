@@ -51,6 +51,8 @@
             <option>Semua Jurusan</option>
             <option>IPA</option>
             <option>IPS</option>
+            <option>farmasi</option>
+
         </select>
     </div>
 
