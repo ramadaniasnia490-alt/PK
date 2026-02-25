@@ -9,32 +9,42 @@
 
 <!-- NAVBAR -->
 <header>
-    <div class="container nav">
-        <img src="cssmora.jpeg" class="logo-img">
+    <div class="pembungkus navbar">
+        <img src="cssmora.jpeg" class="logo">
+
         <nav>
-            <a href="#">Home</a>
+            <a href="#">Beranda</a>
             <a href="#">Alumni</a>
-            <a href="#">Info kegiatan</a>
+            <a href="#">Info Kegiatan</a>
             <a href="#">Berita</a>
-            <a href="#" class="login">Login</a>
+            <a href="#" class="tombol-login">Login</a>
         </nav>
     </div>
 </header>
+
 <!-- BREADCRUMB -->
-<div class="breadcrumb">
-    <span>Home</span> › <span class="active">Alumni</span>
+<div class="jalur-halaman">
+    <span>Beranda</span> › <span class="aktif">Alumni</span>
 </div>
 
-<h2 class="title">Data Alumni CSSMoRA</h2>
+<h2 class="judul-halaman">Data Alumni CSSMoRA</h2>
 
 <!-- FILTER -->
-<div class="filter-box">
-    <div class="filter-left">
+<div class="kotak-filter">
+    <div class="bagian-kiri-filter">
         <label>Angkatan:</label>
         <select>
+            <option>2016</option>
+            <option>2017</option>
+            <option>2018</option>
+            <option>2019</option>
             <option>2020</option>
             <option>2021</option>
             <option>2022</option>
+            <option>2023</option>
+            <option>2024</option>
+            <option>2025</option>
+            <option>2026</option>
         </select>
 
         <select>
@@ -44,14 +54,13 @@
         </select>
     </div>
 
-    <button class="btn-tampilkan">Tampilkan</button>
+    <button class="tombol-tampilkan">Tampilkan</button>
 </div>
 
-<h3 class="angkatan-title">Angkatan 2020</h3>
+<h3 class="judul-angkatan">Angkatan 2020</h3>
 
-<!-- CONTENT -->
-<div class="container page-content">
-    <h2>Data Alumni CSSMoRA</h2>
+<!-- ISI DATA -->
+<div class="pembungkus halaman-alumni">
 
     <?php
     $query = mysqli_query($conn, "SELECT * FROM alumni");
@@ -59,24 +68,27 @@
     while($data = mysqli_fetch_assoc($query)){
     ?>
 
-    <div class="card-alumni">
-        <div class="foto">
+    <div class="kotak-alumni">
+
+        <div class="bagian-foto">
             <img src="pia.jpeg" alt="">
         </div>
 
-        <div class="info">
+        <div class="bagian-info">
             <h3><?php echo $data['nama']; ?></h3>
             <p>Angkatan: <?php echo $data['angkatan']; ?></p>
             <p>Jurusan: <?php echo $data['jurusan']; ?></p>
             <p>Pekerjaan: <?php echo $data['jabatan']; ?></p>
         </div>
 
-        <div>
-            <a href="#" class="btn">Lihat Profil</a>
+        <div class="bagian-tombol">
+            <a href="#" class="tombol-profil">Lihat Profil</a>
         </div>
+
     </div>
 
     <?php } ?>
+
 </div>
 
 </body>
