@@ -3,7 +3,7 @@
 <html>
 <head>
     <title>Data Alumni CSSMoRA</title>
-    <link rel="stylesheet" href="../ALUMNI/alumni.css">
+    <link rel="stylesheet" href="alumni.css">
 </head>
 <body>
 
@@ -92,6 +92,9 @@
     <?php } ?>
 
 </div>
-
+<!-- FOOTER -->
+<footer class="footer">
+    © 2019 UIN Alauddin Makassar. All Rights Reserved.
+</footer>
 </body>
 </html>

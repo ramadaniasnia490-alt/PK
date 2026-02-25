@@ -9,13 +9,13 @@ $row = mysqli_fetch_assoc($data);
 <html>
 <head>
     <title>Detail Kegiatan</title>
-    <link rel="stylesheet" href="CSS.css">
+    <link rel="stylesheet" href="info.css">
 </head>
 <body>
 
 <section class="container" style="padding:50px;">
     <h1><?php echo $row['judul']; ?></h1>
-    <img src="info.jpeg" width="500">
+<img src="../INFO/info.jpeg" class="detail-img">
     <p>📅 <?php echo $row['tanggal']; ?></p>
     <p>📍 <?php echo $row['lokasi']; ?></p>
     <p>⏰ <?php echo $row['waktu']; ?></p>

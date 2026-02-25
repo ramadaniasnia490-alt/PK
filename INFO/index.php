@@ -1,6 +1,8 @@
 <?php
 include "koneksi.php";
 
+$current_page = basename($_SERVER['PHP_SELF']);
+
 $cari = "";
 if(isset($_GET['cari'])){
     $cari = $_GET['cari'];
@@ -23,12 +25,12 @@ if(isset($_GET['cari'])){
     <div class="container nav">
         <img src="../home/cssmora.jpeg" class="logo-img">
         <nav>
-            <a href="index.php">Home</a>
-            <a href="#">Alumni</a>
-            <a href="index.php">Info kegiatan</a>
-            <a href="#">Berita</a>
-            <a href="#" class="login">Login</a>
-        </nav>
+    <a href="index.php" class="<?= ($current_page == 'index.php') ? 'active' : '' ?>">Home</a>
+    <a href="alumni.php" class="<?= ($current_page == 'alumni.php') ? 'active' : '' ?>">Alumni</a>
+    <a href="info.php" class="<?= ($current_page == 'info.php') ? 'active' : '' ?>">Info kegiatan</a>
+    <a href="berita.php" class="<?= ($current_page == 'berita.php') ? 'active' : '' ?>">Berita</a>
+    <a href="login.php" class="login <?= ($current_page == 'login.php') ? 'active' : '' ?>">Login</a>
+</nav>
     </div>
 </header>
 
@@ -87,6 +89,9 @@ if(isset($_GET['cari'])){
 </div>
 
 </section>
-
+<!-- FOOTER -->
+<footer class="footer">
+    © 2019 UIN Alauddin Makassar. All Rights Reserved.
+</footer>
 </body>
 </html>

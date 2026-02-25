@@ -1,17 +1,17 @@
-/* ================= RESET ================= */
+/* ================= RESET */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-/* ================= BODY ================= */
+/* BODY  */
 body {
     font-family: Arial, sans-serif;
     background: #e3e3e3;
 }
 
-/* ================= CONTAINER ================= */
+/* CONTAINER */
 .container {
     width: 90%;
     margin: auto;

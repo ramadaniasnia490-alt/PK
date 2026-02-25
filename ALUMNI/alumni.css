@@ -25,7 +25,7 @@ header {
     justify-content: space-between;
 }
 
-/* Logo website */
+/* Logo  */
 .logo {
     height: 40px;
 }
@@ -208,4 +208,20 @@ nav a:hover {
 
 .tombol-profil:hover {
     transform: translateY(-2px);
+}
+/* ================= FOOTER ================= */
+.footer {
+    background: white;
+    color: rgb(51, 114, 61);
+    text-align: center;
+    padding: 15px 0;
+    font-size: 14px;}
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+footer {
+    margin-top: auto;
 }
