@@ -1,7 +1,7 @@
 /* Mengatur tampilan dasar seluruh halaman */
 body {
     margin: 0;
-    font-family: 'Segoe UI', sans-serif;
+    font-family: Arial, sans-serif;
     background-color: #f5f6f7; /* Warna abu muda */
 }
 
@@ -10,6 +10,10 @@ header {
     background: #ffffff;
     border-bottom: 3px solid #f4b400; /* Garis kuning bawah navbar */
     padding: 14px 0;
+
+    position: sticky;
+    top: 0;
+    z-index: 9999;
 }
 
 /* Pembungkus agar konten tidak mepet kiri kanan */
@@ -40,40 +44,26 @@ nav {
 /* Link menu */
 nav a {
     text-decoration: none;
-    color: #333;
-    font-size: 16px;
+    color:  #1f5f3f;
+    font-size: 20px;
     font-weight: 500;
     transition: 0.3s;
 }
 
 /* Efek saat mouse diarahkan ke menu */
 nav a:hover {
-    color: #0f5132;
+    color: #7d7e76;
 }
 
 /* Tombol login */
 .tombol-login {
-    background: #f1f1f1;
+    background: #5daa6c;
     padding: 8px 18px;
     border-radius: 8px;
+    color: #f5f6f7;
 }
 
-.tombol-login:hover {
-    background: #e4e4e4;
-}
 
-/* Jalur halaman (breadcrumb) */
-.jalur-halaman {
-    font-size: 14px;
-    color: #666;
-    margin: 20px 40px 0 40px;
-}
-
-/* Teks aktif pada breadcrumb */
-.jalur-halaman .aktif {
-    color: #0f5132;
-    font-weight: 600;
-}
 
 /* Judul utama halaman */
 .judul-halaman {
@@ -215,7 +205,15 @@ nav a:hover {
     color: rgb(51, 114, 61);
     text-align: center;
     padding: 15px 0;
-    font-size: 14px;}
+    font-size: 14px;
+
+    position: fixed;   /* bikin diam */
+    bottom: 0;         /* nempel bawah */
+    left: 0;
+    width: 100%;
+    z-index: 9999;
+}
+
 body {
     min-height: 100vh;
     display: flex;

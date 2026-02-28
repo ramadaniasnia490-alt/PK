@@ -13,19 +13,15 @@
         <img src="cssmora.jpeg" class="logo">
 
         <nav>
-            <a href="#">Beranda</a>
-            <a href="#">Alumni</a>
-            <a href="#">Info Kegiatan</a>
+             <a href="../home/index.html">Home</a>
+             <a href="../ALUMNI/index.php">Alumni</a>
+            <a href="../INFO/index.php">Info Kegiatan</a>
             <a href="#">Berita</a>
             <a href="#" class="tombol-login">Login</a>
         </nav>
     </div>
 </header>
 
-<!-- BREADCRUMB -->
-<div class="jalur-halaman">
-    <span>Beranda</span> › <span class="aktif">Alumni</span>
-</div>
 
 <h2 class="judul-halaman">Data Alumni CSSMoRA</h2>
 

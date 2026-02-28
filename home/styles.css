@@ -9,7 +9,10 @@
 body {
     font-family: Arial, sans-serif;
     background: #e3e3e3;
+    padding-bottom: 50px;  /* supaya konten tidak ketutup footer */
+    padding-top: 90px; /* supaya hero tidak ketutup navbar */
 }
+
 
 /* CONTAINER */
 .container {
@@ -27,8 +30,11 @@ header {
     background: #ffffff;
     padding: 15px 0;
     border-bottom: 5px solid #f8c20f;
-}
 
+    position: sticky;
+    top: 0;
+    z-index: 9999;
+}
 .nav {
     display: flex;
     justify-content: space-between;
@@ -51,6 +57,22 @@ nav a {
     font-size: 20px;
     font-weight: 500;
     transition: 0.3s;
+    display: flex;
+    align-items: center;
+}
+
+.login {
+    background: #5daa6c;
+    color: white !important;
+    padding: 6px 16px;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+}
+
+.login-btn:hover {
+    background: #144d32;
+    color: white;
 }
 
 nav a:hover {
@@ -143,7 +165,7 @@ nav a:hover {
 }
 
 .card-icon {
-    width: 80px;
+    width: 130px;
     margin-bottom: 15px;
 }
 
@@ -291,5 +313,10 @@ background: none;
     text-align: center;
     padding: 15px 0;
     font-size: 14px;
-}
 
+    position: fixed;   /* bikin diam */
+    bottom: 0;         /* nempel bawah */
+    left: 0;
+    width: 100%;
+    z-index: 9999;
+}
