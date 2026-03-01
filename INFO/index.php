@@ -25,15 +25,14 @@ if(isset($_GET['cari'])){
     <div class="container nav">
         <img src="../home/cssmora.jpeg" class="logo-img">
         <nav>
-    <a href="index.php" class="<?= ($current_page == 'index.php') ? 'active' : '' ?>">Home</a>
-    <a href="alumni.php" class="<?= ($current_page == 'alumni.php') ? 'active' : '' ?>">Alumni</a>
-    <a href="info.php" class="<?= ($current_page == 'info.php') ? 'active' : '' ?>">Info kegiatan</a>
-    <a href="berita.php" class="<?= ($current_page == 'berita.php') ? 'active' : '' ?>">Berita</a>
-    <a href="login.php" class="login <?= ($current_page == 'login.php') ? 'active' : '' ?>">Login</a>
+    <a href="../home/index.html">Home</a>
+    <a href="../ALUMNI/index.php">Alumni</a>
+     <a href="../INFO/index.php">Info Kegiatan</a>
+    <a href="#">Berita</a>
+    <a href="#" class="login">Login</a>
 </nav>
     </div>
 </header>
-
 <section class="hero">
     <h1>Info Kegiatan Organisasi CSSMoRA</h1>
     <p>Event dan kegiatan terbaru untuk alumni</p>

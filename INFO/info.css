@@ -12,8 +12,8 @@ body{
 
 /* ================= HEADER ================= */
 header {
-    background: #ffffff;
- padding: 15px 45px;
+background: #ffffff;
+ padding: 15px 35px;
  border-bottom: 5px solid #f8c20f;
 }
 
@@ -75,7 +75,7 @@ nav a:hover {
 }
 
 .left-content{
-    flex:2;
+    flex:3;
 }
 
 .right-content{
@@ -163,17 +163,16 @@ nav a:hover {
 
 /* ================= SIDEBAR ================= */
 .dokumentasi h3{
-
+    flex: 1;
     margin-bottom:20px;
 }
 
 .mini-card{
-    background:rgb(234, 226, 226);
-    padding:12px;
+    background:rgb(234,226,226);
+    padding:15px;
     border-radius:12px;
-    transition:0.3s;
-     width: 650px;
-    margin-left:20px;
+    margin-bottom:20px;
+    width:100%;
 }
 
 .mini-card:hover{
