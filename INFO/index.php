@@ -28,8 +28,8 @@ if(isset($_GET['cari'])){
     <a href="../home/index.html">Home</a>
     <a href="../ALUMNI/index.php">Alumni</a>
      <a href="../INFO/index.php">Info Kegiatan</a>
-    <a href="#">Berita</a>
-    <a href="#" class="login">Login</a>
+   <a href="../berita/index.html">Berita</a>
+    <a href="../login/index.php" class="login">Login</a>
 </nav>
     </div>
 </header>

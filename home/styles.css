@@ -10,7 +10,6 @@ body {
     font-family: Arial, sans-serif;
     background: #e3e3e3;
     padding-bottom: 50px;  /* supaya konten tidak ketutup footer */
-    padding-top: 90px; /* supaya hero tidak ketutup navbar */
 }
 
 
@@ -105,6 +104,7 @@ nav a:hover {
 .hero-content {
     position: relative;
     z-index: 2;
+     transform: translateY(-70px); /* naik 50px */
 }
 .hero h1 {
     font-size: 48px;
@@ -129,7 +129,7 @@ nav a:hover {
 .btn:hover {
     background: #d99a00;
 }
-/* ================= FITUR ================= */
+/* ====FITUR==== */
 .fitur {
     position: relative;
     z-index: 5;
@@ -165,7 +165,7 @@ nav a:hover {
 }
 
 .card-icon {
-    width: 130px;
+    width: 140px;
     margin-bottom: 15px;
 }
 

@@ -16,8 +16,8 @@
              <a href="../home/index.html">Home</a>
              <a href="../ALUMNI/index.php">Alumni</a>
             <a href="../INFO/index.php">Info Kegiatan</a>
-            <a href="#">Berita</a>
-            <a href="#" class="tombol-login">Login</a>
+            <a href="../berita/index.html">Berita</a>
+            <a href="../login/index.php" class="tombol-login">Login</a>
         </nav>
     </div>
 </header>
