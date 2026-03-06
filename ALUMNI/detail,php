@@ -1,0 +1,24 @@
+<?php
+include "koneksi.php";
+
+$id = $_GET['id'];
+
+$query = mysqli_query($conn,"SELECT * FROM alumni WHERE id='$id'");
+$data = mysqli_fetch_array($query);
+?>
+
+<h2>Profil Alumni</h2>
+
+<p>Nama : <?php echo $data['nama']; ?></p>
+<p>NIA : <?php echo $data['nia']; ?></p>
+<p>Jenis Kelamin : <?php echo $data['jenis_kelamin']; ?></p>
+<p>Tempat Lahir : <?php echo $data['tempat_lahir']; ?></p>
+<p>Tanggal Lahir : <?php echo $data['tanggal_lahir']; ?></p>
+<p>Program Studi : <?php echo $data['program_studi']; ?></p>
+<p>Fakultas : <?php echo $data['fakultas']; ?></p>
+<p>Motto : <?php echo $data['motto']; ?></p>
+<p>Cita cita : <?php echo $data['cita_cita']; ?></p>
+<p>Email : <?php echo $data['email']; ?></p>
+<p>HP : <?php echo $data['hp']; ?></p>
+<p>Alamat Domisili : <?php echo $data['alamat_domisili']; ?></p>
+<p>Alamat Asal : <?php echo $data['alamat_asal']; ?></p>

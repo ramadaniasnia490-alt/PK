@@ -48,6 +48,9 @@
             <option>IPA</option>
             <option>IPS</option>
             <option>farmasi</option>
+            <option>Kesehatan Masyarakat</option>
+            <option>Teknik Informatika</option>
+            <option>Teknik Arsiteksur</option>
 
         </select>
     </div>
@@ -69,7 +72,7 @@
     <div class="kotak-alumni">
 
         <div class="bagian-foto">
-            <img src="pia.jpeg" alt="">
+            <img src="foto.webp" alt="">
         </div>
 
         <div class="bagian-info">
@@ -80,8 +83,7 @@
         </div>
 
         <div class="bagian-tombol">
-            <a href="#" class="tombol-profil">Lihat Profil</a>
-        </div>
+<a href="detail.php?id=<?php echo $data['id']; ?>" class="tombol-profil">Lihat Profil</a>        </div>
 
     </div>
 
