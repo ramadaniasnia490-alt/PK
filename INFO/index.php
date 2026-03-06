@@ -22,17 +22,16 @@ if(isset($_GET['cari'])){
 <body>
 
 <header>
-    <div class="container nav">
-        <img src="../home/cssmora.jpeg" class="logo-img">
+    <div class="container nav"> <img src="../home/cssmora.jpeg" class="logo-img">
         <nav>
-    <a href="../home/index.html">Home</a>
-    <a href="../ALUMNI/index.php">Alumni</a>
-     <a href="../INFO/index.php">Info Kegiatan</a>
-   <a href="../berita/index.html">Berita</a>
-    <a href="../login/index.php" class="login">Login</a>
-</nav>
+            <a href="../home/index.html">Home</a>
+            <a href="../ALUMNI/index.php">Alumni</a>
+            <a href="../INFO/index.php" class="active">Info Kegiatan</a> <a href="../berita/index.html">Berita</a>
+            <a href="../login/index.php" class="login">Login</a>
+        </nav>
     </div>
 </header>
+
 <section class="hero">
     <h1>Info Kegiatan Organisasi CSSMoRA</h1>
     <p>Event dan kegiatan terbaru untuk alumni</p>

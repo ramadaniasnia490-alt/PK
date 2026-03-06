@@ -11,10 +11,20 @@ body{
 }
 
 /* ================= HEADER ================= */
+/* ================= NAVBAR (SAMA DENGAN HOME) ================= */
 header {
-background: #ffffff;
- padding: 15px 35px;
- border-bottom: 5px solid #f8c20f;
+    background: #ffffff;
+    padding: 13px 0;
+    border-bottom: 5px solid #f8c20f;
+    position: sticky;
+    top: 0;
+    z-index: 9999;
+}
+
+/* Tambahkan/Pastikan .container ini ada */
+.container {
+    width: 90%;
+    margin: auto;
 }
 
 .nav {
@@ -24,13 +34,16 @@ background: #ffffff;
 }
 
 .logo-img {
-    height: 50px;
+    height: 40px; /* Samakan ukurannya */
     object-fit: contain;
+    margin-left: -50px; /* Efek geser kiri sesuai kode home */
 }
 
 nav {
     display: flex;
-    gap: 25px;
+    gap: 20px;
+    margin-right: -40px; /* Efek geser kanan sesuai kode home */
+    align-items: center;
 }
 
 nav a {
@@ -39,10 +52,27 @@ nav a {
     font-size: 20px;
     font-weight: 500;
     transition: 0.3s;
+    display: flex;
+    align-items: center;
 }
 
 nav a:hover {
     color: #d4af37;
+}
+
+.login {
+    background: #5daa6c;
+    color: white !important;
+    padding: 6px 16px;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    font-size: 18px; /* Pastikan font-size sama */
+}
+
+.login:hover {
+    background: #144d32;
+    color: white;
 }
 
 /* ================= HERO ================= */

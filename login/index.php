@@ -11,24 +11,28 @@ session_start();
 <body>
 
 <!-- NAVBAR -->
-<div class="navbar">
-    <div class="logo">
-    <img src="../home/cssmora.jpeg" alt="">
-    </div>
-    <div>
-        <a href="index.php">Home</a>
-        <a href="#">Alumni</a>
-        <a href="#">Kegiatan</a>
+<header>
+    <div class="container nav">
+        <img src="../home/cssmora.jpeg" class="logo-img">
 
-        <?php if(isset($_SESSION['nia'])){ ?>
-            <a href="dashboard.php">Dashboard</a>
-            <a href="logout.php">Logout</a>
-        <?php } else { ?>
-            <a href="login.php">Login</a>
-        <?php } ?>
-    </div>
-</div>
+        <nav>
+            <a href="../home/index.html">Home</a>
+            <a href="../ALUMNI/index.php">Alumni</a>
+            <a href="../INFO/index.php">Info Kegiatan</a>
+            <a href="../berita/index.html">Berita</a>
 
+            <?php 
+            // Cek apakah user sudah login (menggunakan session 'nia')
+            if(isset($_SESSION['nia'])){ 
+            ?>
+                <a href="../dashboard/index.php">Dashboard</a>
+                <a href="../login/logout.php" class="login">Logout</a>
+            <?php } else { ?>
+                <a href="../login/index.php" class="login">Login</a>
+            <?php } ?>
+        </nav>
+    </div>
+</header>
 <!-- HERO SECTION -->
 <div class="hero">
     <h1>Selamat Datang di Website Alumni CSSMORA</h1>
