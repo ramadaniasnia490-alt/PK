@@ -1,4 +1,21 @@
 <?php
+session_start();
+
+if(!isset($_SESSION['nia'])){
+    header("Location: ../login/login.php");
+    exit;
+}
+
+$conn = mysqli_connect("localhost","root","","db_alumni");
+
+if(!$conn){
+    die("Koneksi gagal: " . mysqli_connect_error());
+}
+?>
+
+
+
+<?php
 $conn = mysqli_connect("localhost","root","","db_alumni");
 
 if(!$conn){

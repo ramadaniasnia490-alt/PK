@@ -1,5 +1,5 @@
 <?php
-$conn = mysqli_connect("localhost","root","","cssmora_db");
+$conn = mysqli_connect("localhost","root","","db_alumni");
 if(!$conn){
     die("Koneksi gagal");
 }

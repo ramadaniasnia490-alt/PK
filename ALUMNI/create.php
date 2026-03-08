@@ -1,10 +1,14 @@
 <?php
-$conn = mysqli_connect("localhost","root","","db_alumni");
-if(!$conn){
-    die("Koneksi gagal: " . mysqli_connect_error());
-}
+session_start();
+
+// CEK LOGIN
+
+
+// KONEKSI DATABASE
+include "koneksi.php";
 
 if(isset($_POST['submit'])){
+
     $nama = mysqli_real_escape_string($conn, $_POST['nama']);
     $nia = mysqli_real_escape_string($conn, $_POST['nia']);
     $jenis_kelamin = mysqli_real_escape_string($conn, $_POST['jenis_kelamin']);
@@ -21,13 +25,16 @@ if(isset($_POST['submit'])){
     $motto = mysqli_real_escape_string($conn, $_POST['motto']);
     $cita_cita = mysqli_real_escape_string($conn, $_POST['cita_cita']);
 
-    $query = "INSERT INTO alumni (nama, nia, jenis_kelamin, tempat_lahir, tanggal_lahir, jurusan, fakultas, angkatan, jabatan, email, hp, alamat_domisili, alamat_asal, motto, cita_cita) 
-              VALUES ('$nama', '$nia', '$jenis_kelamin', '$tempat_lahir', '$tanggal_lahir', '$jurusan', '$fakultas', '$angkatan', '$jabatan', '$email', '$hp', '$alamat_domisili', '$alamat_asal', '$motto', '$cita_cita')";
-    
-    if(mysqli_query($conn, $query)){
+    $query = "INSERT INTO alumni 
+    (nama, nia, jenis_kelamin, tempat_lahir, tanggal_lahir, jurusan, fakultas, angkatan, jabatan, email, hp, alamat_domisili, alamat_asal, motto, cita_cita) 
+    VALUES 
+    ('$nama','$nia','$jenis_kelamin','$tempat_lahir','$tanggal_lahir','$jurusan','$fakultas','$angkatan','$jabatan','$email','$hp','$alamat_domisili','$alamat_asal','$motto','$cita_cita')";
+
+    if(mysqli_query($conn,$query)){
         header("Location: index.php");
         exit();
-    } else {
+    }else{
+       
         echo "Error: " . mysqli_error($conn);
     }
 }

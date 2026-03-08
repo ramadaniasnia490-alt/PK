@@ -27,7 +27,7 @@ CSSMORA DASHBOARD
 
 <?php if($_SESSION['role']=="admin"){ ?>
 <div class="card">
-<h3><a href="alumni.php">Kelola Alumni</a></h3>
+<h3><a href="../alumni/index.php">Kelola Alumni</a></h3>
 <p>Tambah & lihat data</p>
 </div>
 <?php } ?>

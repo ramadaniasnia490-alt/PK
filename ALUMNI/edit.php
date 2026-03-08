@@ -1,24 +1,38 @@
 <?php
-$conn = mysqli_connect("localhost","root","","db_alumni");
-if(!$conn){
-    die("Koneksi gagal: " . mysqli_connect_error());
+session_start();
+
+// CEK LOGIN
+if(!isset($_SESSION['nia'])){
+    header("Location: ../login/login.php");
+    exit;
 }
 
+// CEK ROLE ADMIN
+if($_SESSION['role'] != "admin"){
+    echo "Akses ditolak!";
+    exit;
+}
+
+include "koneksi.php";
+
+// AMBIL DATA BERDASARKAN ID
 if(isset($_GET['id'])){
     $id = mysqli_real_escape_string($conn, $_GET['id']);
     $query = mysqli_query($conn, "SELECT * FROM alumni WHERE id='$id'");
     $data = mysqli_fetch_assoc($query);
-    
+
     if(!$data){
         echo "Data tidak ditemukan!";
         exit();
     }
 } else {
-    header("Location: index.php");
+    header("Location: alumni.php");
     exit();
 }
 
+// PROSES UPDATE
 if(isset($_POST['submit'])){
+
     $nama = mysqli_real_escape_string($conn, $_POST['nama']);
     $nia = mysqli_real_escape_string($conn, $_POST['nia']);
     $jenis_kelamin = mysqli_real_escape_string($conn, $_POST['jenis_kelamin']);
@@ -35,113 +49,148 @@ if(isset($_POST['submit'])){
     $motto = mysqli_real_escape_string($conn, $_POST['motto']);
     $cita_cita = mysqli_real_escape_string($conn, $_POST['cita_cita']);
 
-    $query = "UPDATE alumni SET 
-              nama='$nama', nia='$nia', jenis_kelamin='$jenis_kelamin', tempat_lahir='$tempat_lahir', 
-              tanggal_lahir='$tanggal_lahir', jurusan='$jurusan', fakultas='$fakultas', angkatan='$angkatan', 
-              jabatan='$jabatan', email='$email', hp='$hp', alamat_domisili='$alamat_domisili', 
-              alamat_asal='$alamat_asal', motto='$motto', cita_cita='$cita_cita' 
-              WHERE id='$id'";
-    
-    if(mysqli_query($conn, $query)){
-        header("Location: index.php");
-        exit();
-    } else {
-        echo "Error: " . mysqli_error($conn);
+    $update = mysqli_query($conn,"UPDATE alumni SET
+        nama='$nama',
+        nia='$nia',
+        jenis_kelamin='$jenis_kelamin',
+        tempat_lahir='$tempat_lahir',
+        tanggal_lahir='$tanggal_lahir',
+        jurusan='$jurusan',
+        fakultas='$fakultas',
+        angkatan='$angkatan',
+        jabatan='$jabatan',
+        email='$email',
+        hp='$hp',
+        alamat_domisili='$alamat_domisili',
+        alamat_asal='$alamat_asal',
+        motto='$motto',
+        cita_cita='$cita_cita'
+        WHERE id='$id'
+    ");
+
+    if($update){
+        header("Location: alumni.php");
+        exit;
+    }else{
+        echo "Gagal update data";
     }
 }
 ?>
+
 <!DOCTYPE html>
-<html lang="id">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Edit Alumni</title>
-    <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: Arial, sans-serif; background: #f5f5f5; padding: 20px; }
-        .container { max-width: 800px; margin: 0 auto; background: white; padding: 30px; border-radius: 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
-        h1 { margin-bottom: 20px; color: #0f5132; }
-        .form-group { margin-bottom: 15px; }
-        label { display: block; margin-bottom: 5px; font-weight: 500; }
-        input, select, textarea { width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 5px; font-size: 14px; }
-        .btn { padding: 12px 25px; border-radius: 5px; text-decoration: none; display: inline-block; margin-right: 10px; }
-        .btn-save { background: #28a745; color: white; }
-        .btn-cancel { background: #6c757d; color: white; }
-    </style>
+<title>Edit Alumni</title>
+
+<style>
+
+body{
+font-family:Arial;
+background:#f2f2f2;
+padding:20px;
+}
+
+.container{
+background:white;
+padding:30px;
+border-radius:10px;
+max-width:700px;
+margin:auto;
+}
+
+input,select,textarea{
+width:100%;
+padding:10px;
+margin-bottom:10px;
+border:1px solid #ccc;
+border-radius:5px;
+}
+
+button{
+background:#28a745;
+color:white;
+border:none;
+padding:10px 20px;
+border-radius:6px;
+cursor:pointer;
+}
+
+a{
+text-decoration:none;
+color:white;
+background:#6c757d;
+padding:10px 20px;
+border-radius:6px;
+}
+
+</style>
+
 </head>
+
 <body>
-    <div class="container">
-        <h1>✏️ Edit Alumni</h1>
-        <form method="POST" action="">
-            <div class="form-group">
-                <label>Nama Lengkap</label>
-                <input type="text" name="nama" value="<?php echo htmlspecialchars($data['nama']); ?>" required>
-            </div>
-            <div class="form-group">
-                <label>NIA</label>
-                <input type="text" name="nia" value="<?php echo htmlspecialchars($data['nia']); ?>" required>
-            </div>
-            <div class="form-group">
-                <label>Jenis Kelamin</label>
-                <select name="jenis_kelamin" required>
-                    <option value="">Pilih</option>
-                    <option value="Laki-laki" <?php echo $data['jenis_kelamin'] == 'Laki-laki' ? 'selected' : ''; ?>>Laki-laki</option>
-                    <option value="Perempuan" <?php echo $data['jenis_kelamin'] == 'Perempuan' ? 'selected' : ''; ?>>Perempuan</option>
-                </select>
-            </div>
-            <div class="form-group">
-                <label>Tempat Lahir</label>
-                <input type="text" name="tempat_lahir" value="<?php echo htmlspecialchars($data['tempat_lahir']); ?>" required>
-            </div>
-            <div class="form-group">
-                <label>Tanggal Lahir</label>
-                <input type="date" name="tanggal_lahir" value="<?php echo htmlspecialchars($data['tanggal_lahir']); ?>" required>
-            </div>
-            <div class="form-group">
-                <label>Jurusan</label>
-                <input type="text" name="jurusan" value="<?php echo htmlspecialchars($data['jurusan']); ?>" required>
-            </div>
-            <div class="form-group">
-                <label>Fakultas</label>
-                <input type="text" name="fakultas" value="<?php echo htmlspecialchars($data['fakultas']); ?>" required>
-            </div>
-            <div class="form-group">
-                <label>Angkatan</label>
-                <input type="number" name="angkatan" value="<?php echo htmlspecialchars($data['angkatan']); ?>" required>
-            </div>
-            <div class="form-group">
-                <label>Pekerjaan</label>
-                <input type="text" name="jabatan" value="<?php echo htmlspecialchars($data['jabatan']); ?>">
-            </div>
-            <div class="form-group">
-                <label>Email</label>
-                <input type="email" name="email" value="<?php echo htmlspecialchars($data['email']); ?>">
-            </div>
-            <div class="form-group">
-                <label>HP</label>
-                <input type="text" name="hp" value="<?php echo htmlspecialchars($data['hp']); ?>">
-            </div>
-            <div class="form-group">
-                <label>Alamat Domisili</label>
-                <textarea name="alamat_domisili" rows="2"><?php echo htmlspecialchars($data['alamat_domisili']); ?></textarea>
-            </div>
-            <div class="form-group">
-                <label>Alamat Asal</label>
-                <textarea name="alamat_asal" rows="2"><?php echo htmlspecialchars($data['alamat_asal']); ?></textarea>
-            </div>
-            <div class="form-group">
-                <label>Motto</label>
-                <textarea name="motto" rows="2"><?php echo htmlspecialchars($data['motto']); ?></textarea>
-            </div>
-            <div class="form-group">
-                <label>Cita-Cita</label>
-                <textarea name="cita_cita" rows="2"><?php echo htmlspecialchars($data['cita_cita']); ?></textarea>
-            </div>
-            <div style="margin-top: 20px;">
-                <button type="submit" name="submit" class="btn btn-save">💾 Simpan Perubahan</button>
-                <a href="index.php" class="btn btn-cancel">❌ Batal</a>
-            </div>
-        </form>
-    </div>
+
+<div class="container">
+
+<h2>Edit Data Alumni</h2>
+
+<form method="POST">
+
+<label>Nama</label>
+<input type="text" name="nama" value="<?php echo $data['nama']; ?>">
+
+<label>NIA</label>
+<input type="text" name="nia" value="<?php echo $data['nia']; ?>">
+
+<label>Jenis Kelamin</label>
+<select name="jenis_kelamin">
+<option value="Laki-laki" <?php if($data['jenis_kelamin']=="Laki-laki") echo "selected"; ?>>Laki-laki</option>
+<option value="Perempuan" <?php if($data['jenis_kelamin']=="Perempuan") echo "selected"; ?>>Perempuan</option>
+</select>
+
+<label>Tempat Lahir</label>
+<input type="text" name="tempat_lahir" value="<?php echo $data['tempat_lahir']; ?>">
+
+<label>Tanggal Lahir</label>
+<input type="date" name="tanggal_lahir" value="<?php echo $data['tanggal_lahir']; ?>">
+
+<label>Jurusan</label>
+<input type="text" name="jurusan" value="<?php echo $data['jurusan']; ?>">
+
+<label>Fakultas</label>
+<input type="text" name="fakultas" value="<?php echo $data['fakultas']; ?>">
+
+<label>Angkatan</label>
+<input type="number" name="angkatan" value="<?php echo $data['angkatan']; ?>">
+
+<label>Pekerjaan</label>
+<input type="text" name="jabatan" value="<?php echo $data['jabatan']; ?>">
+
+<label>Email</label>
+<input type="email" name="email" value="<?php echo $data['email']; ?>">
+
+<label>No HP</label>
+<input type="text" name="hp" value="<?php echo $data['hp']; ?>">
+
+<label>Alamat Domisili</label>
+<textarea name="alamat_domisili"><?php echo $data['alamat_domisili']; ?></textarea>
+
+<label>Alamat Asal</label>
+<textarea name="alamat_asal"><?php echo $data['alamat_asal']; ?></textarea>
+
+<label>Motto</label>
+<textarea name="motto"><?php echo $data['motto']; ?></textarea>
+
+<label>Cita Cita</label>
+<textarea name="cita_cita"><?php echo $data['cita_cita']; ?></textarea>
+
+<br>
+
+<button type="submit" name="submit">Simpan Perubahan</button>
+<a href="alumni.php">Batal</a>
+
+</form>
+
+</div>
+
 </body>
 </html>

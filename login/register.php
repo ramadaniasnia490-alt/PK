@@ -1,3 +1,27 @@
+<?php
+include "koneksi.php";
+
+if(isset($_POST['register'])){
+
+$nia = $_POST['nia'];
+$password = password_hash($_POST['password'], PASSWORD_DEFAULT);
+$role = $_POST['role'];
+
+$query = mysqli_query($conn,"INSERT INTO users (nia,password,role) 
+VALUES ('$nia','$password','$role')");
+
+if($query){
+    echo "<script>alert('Akun berhasil dibuat'); window.location='login.php';</script>";
+}else{
+    echo "Gagal daftar";
+}
+
+}
+?>
+
+
+
+
 <!DOCTYPE html>
 <html>
 <head>
