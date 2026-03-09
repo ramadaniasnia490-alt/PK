@@ -344,15 +344,15 @@ background: none;
 }
 /* ================= FOOTER ================= */
 .footer {
-    background: white;
-    color: rgb(51, 114, 61);
+    background: #ffffff; /* Menggunakan HEX solid agar pasti tidak transparan */
+    color: #1f5f3f;      /* Warna teks hijau tua yang tegas */
     text-align: center;
-    padding: 15px 0;
+    padding: 20px 0;     /* Sedikit lebih tebal ukurannya */
     font-size: 14px;
+    font-weight: bold;   /* Menebalkan tulisan di footer */
 
-    position: fixed;   /* bikin diam */
-    bottom: 0;         /* nempel bawah */
+    position: fixed;
+    bottom: 0;
     left: 0;
     width: 100%;
     z-index: 9999;
-}
