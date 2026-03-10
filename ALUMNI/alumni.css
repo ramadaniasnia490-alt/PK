@@ -1,14 +1,18 @@
 body {
     margin: 0;
     font-family: Arial, sans-serif;
-    background-color: #ebefec;
+    background-color: #ebefec; /* Warna background abu-abu kehijauan */
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
 }
 
+/* NAVBAR */
 header {
     background: #ffffff;
-    border-bottom: 3px solid #f4b400;
+    border-bottom: 3px solid #f4b400; /* Garis kuning khas di bawah menu */
     padding: 14px 0;
-    position: sticky;
+    position: sticky; /* Menu tetap di atas saat di-scroll */
     top: 0;
     z-index: 9999;
 }
@@ -43,7 +47,7 @@ nav a {
 }
 
 nav a:hover {
-    color: #7d7e76;
+    color: #ee9f17; /* Warna berubah saat kursor menyentuh menu */
 }
 
 .tombol-login {
@@ -53,12 +57,23 @@ nav a:hover {
     color: #f5f6f7;
 }
 
+/*  UTAMA  */
 .judul-halaman {
     font-size: 32px;
     color: #0f5132;
     margin: 15px 40px 25px 40px;
 }
 
+.judul-angkatan {
+    color: #d4a017;
+    margin: 0 40px 15px 40px;
+}
+
+.halaman-alumni {
+    margin: 0 40px 60px 40px;
+}
+
+/* BAGIAN FILTER */
 .kotak-filter {
     background: #fff;
     padding: 25px 30px;
@@ -76,11 +91,6 @@ nav a:hover {
     gap: 15px;
 }
 
-.bagian-kiri-filter label {
-    font-weight: 600;
-    color: #333;
-}
-
 .bagian-kiri-filter select {
     padding: 8px 14px;
     border-radius: 8px;
@@ -89,6 +99,37 @@ nav a:hover {
     font-size: 14px;
 }
 
+/* CARI NAMA  */
+.pembungkus-cari {
+    position: relative;
+    display: flex;
+    align-items: center;
+    margin-left: 15px;
+}
+
+.ikon-cari {
+    position: absolute;
+    left: 15px;
+    color: #0f5132;
+    z-index: 10;
+}
+
+.input-cari-nama {
+    width: 550px;
+    padding: 10px 15px 10px 40px !important; 
+    border-radius: 25px; 
+    border: 1px solid #989595;
+    outline: none;
+    transition: all 0.4s ease; 
+}
+
+.input-cari-nama:focus {
+    width: 600px;
+    border-color: #f4b400;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+/* TOMBOL AKSI */
 .tombol-tampilkan {
     background: #0f5132;
     color: #fff;
@@ -99,19 +140,16 @@ nav a:hover {
     cursor: pointer;
 }
 
-.tombol-tampilkan:hover {
-    background: #0c3d27;
+.tombol-tambah {
+    background: #0f5132;
+    color: white;
+    padding: 10px 18px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
 }
 
-.judul-angkatan {
-    color: #d4a017;
-    margin: 0 40px 15px 40px;
-}
-
-.halaman-alumni {
-    margin: 0 40px 60px 40px;
-}
-
+/*  KARTU DATA ALUMNI */
 .kotak-alumni {
     background: #feffff;
     border-radius: 14px;
@@ -122,10 +160,11 @@ nav a:hover {
     justify-content: space-between;
     box-shadow: 0 4px 15px rgba(0,0,0,0.08);
     transition: 0.3s;
+    height: 130px
 }
 
 .kotak-alumni:hover {
-    transform: translateY(-3px);
+    transform: translateY(-3px); /* Efek naik sedikit saat disentuh kursor */
     box-shadow: 0 8px 20px rgba(0,0,0,0.12);
 }
 
@@ -148,18 +187,7 @@ nav a:hover {
     flex: 1;
 }
 
-.bagian-info h3 {
-    margin: 0 0 8px 0;
-    font-size: 18px;
-    font-weight: 600;
-}
-
-.bagian-info p {
-    margin: 3px 0;
-    color: #555;
-    font-size: 14px;
-}
-
+/*  TOMBOL  (PROFIL, EDIT, HAPUS)  */
 .tombol-profil {
     background: linear-gradient(180deg, #ffc107, #f4b400);
     padding: 10px 18px;
@@ -168,68 +196,38 @@ nav a:hover {
     font-weight: 600;
     color: #000;
     box-shadow: 0 3px 8px rgba(0,0,0,0.15);
-    transition: 0.3s;
 }
 
-.tombol-profil:hover {
-    transform: translateY(-2px);
+.tombol-edit {
+    background: #ffc107;
+    padding: 10px 15px;
+    border-radius: 8px;
+    text-decoration: none;
+    color: black;
+    margin-left: 10px;
 }
 
+.tombol-hapus {
+    background: #dc3545;
+    padding: 10px 15px;
+    border-radius: 8px;
+    text-decoration: none;
+    color: #f4fbf7;
+    margin-left: 10px;
+}
+
+/* FOOTER */
 .footer {
-    background: #ffffff; /* Menggunakan HEX solid agar pasti tidak transparan */
-    color: #1f5f3f;      /* Warna teks hijau tua yang tegas */
+    background: #ffffff; 
+    color: #1f5f3f;      
     text-align: center;
-    padding: 20px 0;     /* Sedikit lebih tebal ukurannya */
+    padding: 20px 0;     
     font-size: 14px;
-    font-weight: bold;   /* Menebalkan tulisan di footer */
-
+    font-weight: bold;   
     position: fixed;
     bottom: 0;
     left: 0;
     width: 100%;
     z-index: 9999;
-
-    /* --- TAMBAHKAN INI AGAR TERLIHAT TEGAS --- */
-    box-shadow: 0 -5px 15px rgba(0, 0, 0, 0.1); /* Bayangan halus ke arah atas */
-    opacity: 1 !important; /* Memastikan transparansi benar-benar nol */
-}
-
-body {
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-}
-
-footer {
-    margin-top: auto;
-}
-
-/* tombol tambah */
-.tombol-tambah{
-    background:#0f5132;
-    color:white;
-    padding:10px 18px;
-    border-radius:8px;
-    text-decoration:none;
-    font-weight:600;
-}
-
-/* tombol edit */
-.tombol-edit{
-    background:#ffc107;
-    padding:10px 15px;
-    border-radius:8px;
-    text-decoration:none;
-    color:black;
-    margin-left:10px;
-}
-
-/* tombol hapus */
-.tombol-hapus{
-    background:#dc3545;
-    padding:10px 15px;
-    border-radius:8px;
-    text-decoration:none;
-    color:rgb(244, 251, 247);
-    margin-left:10px;
+    box-shadow: 0 -5px 15px rgba(0, 0, 0, 0.1); 
 }
