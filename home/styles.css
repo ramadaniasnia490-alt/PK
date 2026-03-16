@@ -195,9 +195,9 @@ nav a:hover {
        url('../img/p.jpeg') center/cover no-repeat; } 
        
 .stat-box {
-     padding: 45px 60px;
+     padding: 40px 50px;
      border-radius: 25px; 
-     width: 85%; 
+     width: 75%; 
      max-width: 1000px; 
      box-shadow: 0 25px 60px rgba(0,0,0,0.15); 
     } 
@@ -295,7 +295,7 @@ background: none;
 
 .social-icons {
     display: flex;
-    gap: 25px;
+    gap: 20px;
 }
 
 .icon-box {
@@ -329,12 +329,12 @@ background: none;
 
 .social-icons {
     display: flex;
-    gap: 15px;
+    gap: 8px;
 }
 
 .social-icons img {
-    width: 35px;
-    height: 35px;
+    width: 30x;
+    height: 30px;
     filter: brightness(0) invert(1);
     position: relative;
     top: -10px;   /* ini yang bikin naik */
@@ -360,6 +360,37 @@ background: none;
 
 
 
+.form-hero-kuning {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
 
+.input-cari-kuning {
+    background-color: #f4b400; /* Warna kuning CSSMoRA */
+    color: white;              /* Warna teks saat mengetik */
+    padding: 12px 35px;
+    border-radius: 30px;       /* Lonjong sempurna */
+    border: none;
+    width: 300px;              /* Lebar kotak */
+    text-align: center;        /* Teks placeholder di tengah */
+    font-weight: bold;
+    font-size: 16px;
+    outline: none;             /* Menghilangkan garis biru saat diklik */
+    transition: 0.3s;
+    cursor: text;
+}
+
+/* Mengubah warna tulisan "Cari Alumni di sini..." jadi putih transparan */
+.input-cari-kuning::placeholder {
+    color: rgba(255, 255, 255, 0.8);
+    font-weight: normal;
+}
+
+.input-cari-kuning:focus {
+    background-color: #d4a017; /* Sedikit gelap saat diklik */
+    width: 400px;              /* Memanjang sedikit saat user mulai mengetik */
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+}
 
 
