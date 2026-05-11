@@ -1,9 +1,8 @@
 <?php
 
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\CategoryController;
-use App\Http\Controllers\ItemController;
+use App\Http\Controllers\SpecialistController;
+use App\Http\Controllers\DoctorController;
 
-Route::apiResource('categories', CategoryController::class);
-Route::apiResource('items', ItemController::class);
+Route::apiResource('specialists', SpecialistController::class);
+Route::apiResource('doctors', DoctorController::class);
