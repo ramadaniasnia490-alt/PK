@@ -2,99 +2,73 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Category;
-use Illuminate\Http\Request;
+use App\Http\Requests\StoreCategoryRequest;
+use App\Http\Requests\UpdateCategoryRequest;
+use App\Service\CategoryService;
 
 class CategoryController extends Controller
 {
-    // GET /api/categories
-    public function index()
+    protected CategoryService $svc;
+
+    public function __construct(CategoryService $svc)
     {
-        $categories = Category::with('items')->get();
-        return response()->json([
-            'success' => true,
-            'data'    => $categories,
-        ], 200);
+        $this->svc = $svc;
     }
 
-    // POST /api/categories
-    public function store(Request $request)
+    public function index()
     {
-        $validated = $request->validate([
-            'name'        => 'required|string|max:255',
-            'description' => 'nullable|string',
-        ]);
-
-        $category = Category::create($validated);
-
         return response()->json([
-            'success' => true,
-            'message' => 'Category created successfully',
-            'data'    => $category,
+            'status'  => 'success',
+            'data'    => $this->svc->all(),
+            'message' => 'Berhasil menarik semua data Kategori'
+        ]);
+    }
+
+    public function store(StoreCategoryRequest $req)
+    {
+        $cat = $this->svc->create($req->validated());
+        return response()->json([
+            'status'  => 'success',
+            'data'    => $cat,
+            'message' => 'Kategori berhasil dibuat'
         ], 201);
     }
 
-    // GET /api/categories/{id}
-    public function show(string $id)
+    public function show($id)
     {
-        $category = Category::with('items')->find($id);
-
-        if (!$category) {
+        try {
+            $cat = $this->svc->find($id);
             return response()->json([
-                'success' => false,
-                'message' => 'Category not found',
+                'status'  => 'success',
+                'data'    => $cat,
+                'message' => 'Berhasil menarik satu data kategori'
+            ]);
+        } catch (\Exception $e) {
+            return response()->json([
+                'status'  => 'error',
+                'data'    => null,
+                'message' => $e->getMessage()
             ], 404);
         }
-
-        return response()->json([
-            'success' => true,
-            'data'    => $category,
-        ], 200);
     }
 
-    // PUT /api/categories/{id}
-    public function update(Request $request, string $id)
+    public function update(UpdateCategoryRequest $req, $id)
     {
-        $category = Category::find($id);
-
-        if (!$category) {
-            return response()->json([
-                'success' => false,
-                'message' => 'Category not found',
-            ], 404);
-        }
-
-        $validated = $request->validate([
-            'name'        => 'sometimes|required|string|max:255',
-            'description' => 'nullable|string',
+        $cat = $this->svc->update($id, $req->validated());
+        return response()->json([
+            'status'  => 'success',
+            'data'    => $cat,
+            'message' => 'Kategori berhasil diperbarui'
         ]);
-
-        $category->update($validated);
-
-        return response()->json([
-            'success' => true,
-            'message' => 'Category updated successfully',
-            'data'    => $category,
-        ], 200);
     }
 
-    // DELETE /api/categories/{id}
-    public function destroy(string $id)
+    public function destroy($id)
     {
-        $category = Category::find($id);
-
-        if (!$category) {
-            return response()->json([
-                'success' => false,
-                'message' => 'Category not found',
-            ], 404);
-        }
-
-        $category->delete();
-
+        $this->svc->delete($id);
         return response()->json([
-            'success' => true,
-            'message' => 'Category deleted successfully',
-        ], 200);
+            'status'  => 'success',
+            'data'    => null,
+            'message' => 'Kategori berhasil dihapus'
+        ], 204);
     }
 }
