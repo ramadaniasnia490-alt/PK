@@ -1,12 +1,25 @@
 <?php
-
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\SpecialistController;
-use App\Http\Controllers\DoctorController;
-use App\Http\Controllers\ItemController;
-use App\Http\Controllers\CategoryController;
 
-Route::apiResource('specialists', SpecialistController::class);
-Route::apiResource('doctors', DoctorController::class);
-Route::apiResource('items', ItemController::class);
-Route::apiResource('categories', CategoryController::class);
+// Route publik (tidak perlu token)
+Route::post('register', 'App\Http\Controllers\AuthController@register');
+Route::post('login',    'App\Http\Controllers\AuthController@login');
+
+// Route yang butuh token Sanctum
+Route::middleware('auth:sanctum')->group(function () {
+    Route::apiResource('categories',
+        'App\Http\Controllers\CategoryController')
+        ->except(['destroy']);
+
+    Route::delete('categories/{category}',
+        'App\Http\Controllers\CategoryController@destroy')
+        ->middleware('role:admin');
+
+    Route::apiResource('items',
+        'App\Http\Controllers\ItemController')
+        ->except(['destroy']);
+
+    Route::delete('items/{item}',
+        'App\Http\Controllers\ItemController@destroy')
+        ->middleware('role:admin');
+});
